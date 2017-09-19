@@ -1,9 +1,43 @@
 #include <iostream>
-
+#include <cmath>
 using namespace std;
-int add(int a, int b) {
-	return a + b;
+//int add(int a, int b) {
+//	return a + b;
+//}
+int fibonacci(int n)  
+{  
+	int f1 = 2, f2 = 3, fn = 0;  
+	if (n < 0)  
+	{  
+		return fn;  
+	}  
+	else if (n == 1)  
+	{  
+		return f1;  
+	}  
+	else if (n == 2)  
+	{  
+		return f2;  
+	}  
+	else  
+	{  
+		//迭代实现  
+		for (int i = 2; i < n; i++)  
+		{  
+			fn = f1 + f2;  
+			f1 = f2;  
+			f2 = fn;  
+		}  
+  
+		return fn;  
+	}  
 }
+
+int Func(int n) { 
+	if(n<0) {  return -1; } 
+	if(n==0) {  return 0; } 
+	return pow(2,(n/2))+pow(2,((n-(n/2)))-1);
+} 
 int main(int argc, char *argv[]) {
 //	int x = 6;
 //	int y = 7;
@@ -29,6 +63,15 @@ int main(int argc, char *argv[]) {
 //int i = 1;
 //sizeof(i++);
 //cout << i;
-cout << sizeof(int) << sizeof(float) << sizeof(double) << sizeof(char *) << sizeof(long);
+//cout << sizeof(int) << sizeof(float) << sizeof(double) << sizeof(char *) << sizeof(long);
+//int x = fibonacci(13);
+//int y = Func(3);
+//cout << y;
+//cout << x;
+//unsigned int a = 0x1234;
+//unsigned char b = *(unsigned char *)&a;
+//cout << b;
+struct T {};
+cout << sizeof(T);
 return 0;
 }
