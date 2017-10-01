@@ -125,35 +125,72 @@ class Trie_tree(object):
         if self.tmp:
             self.tmp.pop()
 
+    # 实现前缀匹配
+    def pre_match(self, pre_str):
+        current_word = pre_str
+        current_node = self._root
+        return self._pre_match_op(current_word, current_node)
+
+    def _pre_match_op(self, current_word, current_node):
+        if current_word:
+            first_char = current_word[0]
+            child_node = current_node[1]
+            if not child_node:
+                return None
+
+            is_in_child_node = False
+            for node in child_node:
+                if first_char == node[2]:
+                    is_in_child_node = True
+                    current_word = current_word[1:]
+                    current_node = node
+                    return self._pre_match_op(current_word, current_node)
+
+            if not is_in_child_node:
+                return None
+        else:
+            match_word = []
+
+            # pre_str is already a word
+            if current_node[3]:
+                match_word.append("")
+
+            self._pre_match_dfs("", current_node, match_word)
+            return match_word
+
+    def _pre_match_dfs(self, keep_char, current_node, match_word):
+        child_node = current_node[1]
+        for child in child_node:
+            word = keep_char + child[2]
+            # if it is a word
+            if child[3]:
+                match_word.append(word)
+
+            self._pre_match_dfs(word, child, match_word)
+
+        return match_word
+
 if __name__ == '__main__':
     demo_trie = Trie_tree()
-    print ("--------Insert:---------")
-    for word in ["apps", "apple", "cook", "cookie", "cold"]:
-        print (word)
-        demo_trie.insert(word)
+    print ("--------Insert dict--------")
+    with open("words.txt", "r") as word_set:
+        for line in word_set:
+            for word in line.split():
+                demo_trie.insert(word)
 
-    print ("--------Print Test:---------")
-    demo_trie.print_tree(demo_trie._root)
-
-    print ("--------Find Test:--------")
-    print ("ap:     ", demo_trie.find("ap"))
-    print ("apps:   ", demo_trie.find("apps"))
-    print ("apple:  ", demo_trie.find("apple"))
-    print ("apples: ", demo_trie.find("apples"))
-    print ("coo:    ", demo_trie.find("coo"))
-    print ("cook:   ", demo_trie.find("cook"))
-    print ("cookie: ", demo_trie.find("cookie"))
-    print ("cold:   ", demo_trie.find("cold"))
-
-    print ("--------Delete Test:--------")
-    demo_trie.delete("cookie")
-    print ("> Delete cookie")
-    print ("Find cook   ?", demo_trie.find("cook"))
-    print ("Find cookie ?", demo_trie.find("cookie"))
-    demo_trie.delete("apple")
-    print ("> Delete apple")
-    print ("Find apps   ?", demo_trie.find("apps"))
-    print ("Find apple  ?", demo_trie.find("apple"))
-
-    print ("--------Print Test:---------")
-    demo_trie.print_tree(demo_trie._root)
+    pre_str = ""
+    print ("--------Enter pre_str-------")
+    # while (pre_str != EOFError):
+    #     try:
+    pre_str = input("-> ")
+    print (pre_str)
+    words = demo_trie.pre_match(pre_str)
+    if not words:
+        print ("No word start with ", pre_str)
+    else:
+        for word in words:
+            print (pre_str + word)
+            print ("Totaly", len(words), "words")
+        # except EOFError:
+        #     print ("Exit......")
+        #     break
