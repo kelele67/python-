@@ -1,4 +1,4 @@
-#!/usr/bin/python
+   #!/usr/bin/python
 
 #def binary_search(arr, l, r, x):
 #	if r >= l:
@@ -13,6 +13,7 @@
 #	else:
 #		return -1
 
+#递归版本
 def binary_search(arr, l, r, x):
 	while l <= r:
 		mid = l + (r - l) / 2

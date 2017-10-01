@@ -38,6 +38,18 @@ int Func(int n) {
 	if(n==0) {  return 0; } 
 	return pow(2,(n/2))+pow(2,((n-(n/2)))-1);
 } 
+
+int aaa(int a) {
+
+return a++;}
+int countZeroNum2(int N) {
+	int num = 0;
+	while(N > 0) {
+	num += (N/5);
+	N /= 5;
+	}
+	return num;
+	}
 int main(int argc, char *argv[]) {
 //	int x = 6;
 //	int y = 7;
@@ -71,7 +83,23 @@ int main(int argc, char *argv[]) {
 //unsigned int a = 0x1234;
 //unsigned char b = *(unsigned char *)&a;
 //cout << b;
-struct T {};
-cout << sizeof(T);
+//struct T {};
+//cout << sizeof(T);
+//int i = 1000, cnt = 0;
+//while (i > 1) {
+//	i /= 2;
+//	cnt++;
+//}
+//cout << cnt;
+//cout << sizeof(void *);
+//int x = countZeroNum2(75);
+//cout << x;
+int b = 2016;
+int a = 0;
+while (b) {
+	a++;
+	b = b & (b-1);
+}
+cout << a;
 return 0;
 }
