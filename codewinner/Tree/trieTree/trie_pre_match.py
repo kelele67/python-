@@ -1,4 +1,4 @@
-# -*- coding: utf -*-
+# -*- coding: utf-8 -*-
 
 class Trie_tree(object):
 
