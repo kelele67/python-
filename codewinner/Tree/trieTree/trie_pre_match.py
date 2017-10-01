@@ -172,25 +172,22 @@ class Trie_tree(object):
 
 if __name__ == '__main__':
     demo_trie = Trie_tree()
-    print ("--------Insert dict--------")
+    print ("--------Insert dict---------")
     with open("words.txt", "r") as word_set:
         for line in word_set:
             for word in line.split():
                 demo_trie.insert(word)
 
-    pre_str = ""
     print ("--------Enter pre_str-------")
-    # while (pre_str != EOFError):
-    #     try:
-    pre_str = input("-> ")
-    print (pre_str)
-    words = demo_trie.pre_match(pre_str)
-    if not words:
-        print ("No word start with ", pre_str)
-    else:
-        for word in words:
-            print (pre_str + word)
-            print ("Totaly", len(words), "words")
-        # except EOFError:
-        #     print ("Exit......")
-        #     break
+    try:
+        pre_str = input()
+        print ("--------Pre match-----------")
+        words = demo_trie.pre_match(pre_str)
+        if not words:
+            print ("No word starts with ", pre_str)
+        else:
+            for word in words:
+                print (pre_str + word)
+        print ("Totaly", len(words), "words")
+    except EOFError:
+        print ("Exit......")

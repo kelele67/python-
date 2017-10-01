@@ -558,7 +558,7 @@ deep
 wide
 alone
 character
-English
+english
 happy
 critic
 unit
@@ -569,7 +569,8 @@ nor
 fill
 cold
 represent
-sudden 572 basic
+sudden
+basic
 kill
 fine
 trouble
@@ -966,7 +967,7 @@ news
 unless
 dinner
 someone
-100 signal
+signal
 yard
 ideal
 warm
@@ -1139,7 +1140,8 @@ key
 entertain
 soul
 neighborhood
-friendly 1143 pair
+friendly
+pair
 stone
 lean
 protect
@@ -1734,7 +1736,7 @@ delicate
 despair
 awake
 tea
-FALSE
+false
 fortune
 cap
 thread
@@ -1775,7 +1777,7 @@ aunt
 zero
 idle
 fever
-Christmas
+christmas
 regret
 jaw
 soap
