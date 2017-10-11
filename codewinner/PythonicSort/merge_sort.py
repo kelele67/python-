@@ -18,7 +18,7 @@ def sort(seq):
         return seq
     else:
         middle = int(len(seq) / 2)
-        left = sort(seq[:middle])/Users/Kelele67/Desktop/C-Interfaces-and-Implementations/src
+        left = sort(seq[:middle])
         right = sort(seq[middle:])
         return merge(left, right)
 
